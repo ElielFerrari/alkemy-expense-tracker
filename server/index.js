@@ -35,4 +35,16 @@ app.post('/create', (req, res) => {
     })
 });
 
+// Acción get del botón
+app.get('/transactions', (req, res) => {
+    db.query("SELECT * FROM expense_table", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+
 app.listen(3001, () => console.log('Server started on port 3001'));
