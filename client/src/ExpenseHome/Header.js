@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Header ({ totalExpense }){
+function Header ({ totalAmount }){
     return (
         <header>
             <h1>Expense Tracker</h1>
-            <div className="total-expense">${totalExpense}</div>
+            <div className="total-expense">${ totalAmount }</div>
         </header>
     )
 }

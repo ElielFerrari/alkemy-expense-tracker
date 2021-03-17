@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-function ExpenseForm () {
+function ExpenseForm ({ amount, setAmount }) {
 
     const [desc, setDesc] = useState(null);
-    const [amount, setAmount] = useState(null);
     const [date, setDate] = useState(null);
     const [type, setType] = useState(null);
     const [category, setCategory] = useState(null);

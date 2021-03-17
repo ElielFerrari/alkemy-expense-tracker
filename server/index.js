@@ -15,17 +15,11 @@ const db = mysql.createConnection({
     database: 'expensesystem',
 });
 
-
 //Petición post de presupuestos a la db
 app.post('/create', (req, res) => {
-    const desc = req.body.desc;
-    const amount = req.body.amount;
-    const date = req.body.date;
-    const type = req.body.type;
-    const category = req.body.category;
-    const userId = req.body.userId;
 
-    db.query('INSERT INTO expense_table (description, amount, date, type, category, userID) VALUES (?,?,?,?,?,1)', [desc, amount, date, type, category, userId],
+    db.query('INSERT INTO expense_table (description, category, amount, date, type, userID) '
+    +'VALUES (?,?,?,?,?,1)',[req.body.desc, req.body.category, req.body.amount, req.body.date, req.body.type, req.body.userId],
      (err, result) => {
         if(err) {
             console.log(err);
@@ -37,7 +31,23 @@ app.post('/create', (req, res) => {
 
 // Acción get del botón
 app.get('/transactions', (req, res) => {
-    db.query("SELECT * FROM expense_table", (err, result) => {
+
+    const queryoptions = req.query.category!=null?{category : req.query.category } : true;
+    
+    db.query("SELECT * FROM expense_table WHERE ?", queryoptions, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+// Petición delete de presupuestos a la db
+app.delete('/delete/:id', (req, res) => {
+
+    db.query("DELETE FROM expense_table WHERE id = ?", [req.params.id],
+    (err, result) => {
         if (err) {
             console.log(err);
         } else {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './ExpenseHome/Header';
 import ExpenseForm from './ExpenseHome/ExpenseForm';
@@ -6,11 +6,26 @@ import ExpenseList from './ExpenseHome/ExpenseList';
 
 function App() {
 
+  const [amount, setAmount] = useState();
+  const [totalAmount, setTotalAmount] = useState();
+  const [transaction, setTransaction] = useState([]);
+
+  useEffect(() => {
+    let temp = 0;
+    for (let i = 0; i < transaction.length; i++) {
+      if (transaction[i].type === 'expense') {
+          temp -= transaction[i].amount; 
+      } else {
+          temp += transaction[i].amount;
+      }
+    setTotalAmount(temp);
+  }}, [transaction]);
+
   return (
     <div className="App">
-     <Header />
-     <ExpenseForm />
-     <ExpenseList />
+     <Header totalAmount={totalAmount}/>
+     <ExpenseForm amount={amount} setAmount={setAmount} />
+     <ExpenseList transaction={transaction} setTransaction={setTransaction} />
     </div>
   );
 }
