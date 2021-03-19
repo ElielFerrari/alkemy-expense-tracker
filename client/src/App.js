@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     let temp = 0;
     for (let i = 0; i < transaction.length; i++) {
-      if (transaction[i].type === 'expense') {
+      if (transaction[i].type === 'Expense') {
           temp -= transaction[i].amount; 
       } else {
           temp += transaction[i].amount;
@@ -27,7 +27,7 @@ function App() {
      <ExpenseForm amount={amount} setAmount={setAmount} />
      <ExpenseList transaction={transaction} setTransaction={setTransaction} />
     </div>
-  );
+  )
 }
 
 export default App;

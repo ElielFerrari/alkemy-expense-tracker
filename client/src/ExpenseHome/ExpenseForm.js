@@ -28,11 +28,11 @@ function ExpenseForm ({ amount, setAmount }) {
             <label >Amount:</label>
             <input type="number" onChange={e => {setAmount(e.target.value)}} required/>
             <label >Type of Transaction:</label>
-            <input list="type" name="type" onChange={e => {setType(e.target.value)}} required></input>
-            <datalist id="type">
-                <option value="expense" />
-                <option value="deposit" />
-            </datalist>
+            <select  name="type" onChange={e => {setType(e.target.value)}} required>
+                <option value="" >Choose Type </option>
+                <option value="Expense" >Expense </option>
+                <option value="Deposit">Deposit </option>
+            </select>
             <label >Date:</label>
             <input type="date" onChange={e => {setDate(e.target.value)}} required />
 

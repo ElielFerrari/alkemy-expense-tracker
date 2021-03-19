@@ -33,7 +33,7 @@ app.post('/create', (req, res) => {
 app.get('/transactions', (req, res) => {
 
     const queryoptions = req.query.category!=null?{category : req.query.category } : true;
-    
+
     db.query("SELECT * FROM expense_table WHERE ?", queryoptions, (err, result) => {
         if (err) {
             console.log(err);
@@ -42,6 +42,23 @@ app.get('/transactions', (req, res) => {
         }
     });
 });
+
+// Petición put
+app.put('/update/:id', (req, res) => {
+    
+    console.log(req.params);
+    db.query('UPDATE expense_table SET description=?, category=?, amount=?, date=?, userId=? WHERE id = ?', 
+    [req.body.newDesc, req.body.newCategory, req.body.newAmount, req.body.newDate, 1 , req.params.id],
+    (err, result) => {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send('values updated');
+        }
+    })
+});
+
+
 
 // Petición delete de presupuestos a la db
 app.delete('/delete/:id', (req, res) => {
