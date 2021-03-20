@@ -3,9 +3,9 @@ import axios from 'axios';
 
 function ExpenseEditForm ({ editList }) {
 
-    const [newCategory, setNewCategory] = useState(null)
-    const [newDesc, setNewDesc] = useState(null)
-    const [newAmount, setNewAmount] = useState(null)
+    const [newCategory, setNewCategory] = useState(editList.category)
+    const [newDesc, setNewDesc] = useState(editList.description)
+    const [newAmount, setNewAmount] = useState(editList.amount)
     const [newDate, setNewDate] = useState(null)
 
     const editTransaction = (id) => axios.put(`http://localhost:3001/update/${id}`, {
@@ -24,7 +24,7 @@ function ExpenseEditForm ({ editList }) {
             <label >Amount:</label>
             <input defaultValue={editList.amount} onChange={(e) => {setNewAmount(e.target.value)}} type="number" required/>
             <label >Date:</label>
-            <input type="date" onChange={(e) => {setNewDate(e.target.value)}} required />
+            <input onChange={(e) => {setNewDate(e.target.value)}} type="date" required />
     
             <button type='submit' onClick={() => editTransaction(editList.id) } >Edit Transaction</button>
         </form>

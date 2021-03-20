@@ -17,9 +17,9 @@ const db = mysql.createConnection({
 
 //Petición post de presupuestos a la db
 app.post('/create', (req, res) => {
-
-    db.query('INSERT INTO expense_table (description, category, amount, date, type, userID) '
-    +'VALUES (?,?,?,?,?,1)',[req.body.desc, req.body.category, req.body.amount, req.body.date, req.body.type, req.body.userId],
+    console.log(req.body.date);
+    db.query('INSERT INTO expense_table (description, category, amount, date, type) '
+    +'VALUES (?,?,?,?,?)',[req.body.desc, req.body.category, req.body.amount, req.body.date, req.body.type],
      (err, result) => {
         if(err) {
             console.log(err);
@@ -46,9 +46,8 @@ app.get('/transactions', (req, res) => {
 // Petición put
 app.put('/update/:id', (req, res) => {
     
-    console.log(req.params);
-    db.query('UPDATE expense_table SET description=?, category=?, amount=?, date=?, userId=? WHERE id = ?', 
-    [req.body.newDesc, req.body.newCategory, req.body.newAmount, req.body.newDate, 1 , req.params.id],
+    db.query('UPDATE expense_table SET description=?, category=?, amount=?, date=? WHERE id = ?', 
+    [req.body.newDesc, req.body.newCategory, req.body.newAmount, req.body.newDate, req.params.id],
     (err, result) => {
         if(err) {
             console.log(err);
