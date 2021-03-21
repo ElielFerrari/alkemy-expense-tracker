@@ -1,3 +1,19 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-flow: wrap;
+  background-color: rgba(100, 148, 237, 0.418);
+  height: 100vh;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.App Header {
+  display: flex;
+  width: 100%;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.App Header h2{
+  color: rgba(50, 163, 35, 0.767);
+}
+.App .balance{
+  color: black;
 }

@@ -1,0 +1,100 @@
+.form{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    background: rgba(130, 163, 207, 0.856);
+    width: 300px;
+    height: 95%;
+}
+.form input, .form select {
+    vertical-align: middle;
+    margin: 10px 0px 5px 0px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 170px;
+
+    -ms-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box; 
+    box-sizing:content-box;
+}
+.form button {
+    padding: 10px 20px ;
+    background-color: rgba(30, 143, 255, 0.801);
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+    margin: auto;
+}
+.form button:hover {
+    background-color: royalblue;
+}
+
+  /* Expense List*/
+.transactions {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 10px;
+}
+.transaction-list{
+    background: rgba(130, 163, 207, 0.856);
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 1020px;
+}
+.transaction-list div{
+    border: 2px solid #ddd;
+    padding: 10px;
+    width: 140px;
+    font-size: 0.8em;
+}
+
+.transactions button{
+    padding: 10px 20px ;
+    background-color: royalblue;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+}
+.transactions .delete-button{
+    padding: 10px 20px ;
+    background-color: rgba(220, 20, 60, 0.767);
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+}
+/* Expense Edit Form*/
+
+.show-edit-form{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(245, 77, 71, 0.685);
+    width: 1008px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+.show-edit-form input{
+    width: 120px;
+}
+.show-edit-form label{
+    width: 80px;
+    margin: auto;
+}
+.show-edit-form button{
+    width: 100px;
+    margin: auto;
+}
+
+
+/* Search input*/
+.search {
+    vertical-align: middle;
+    margin: 10px 0px 20px 0px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}

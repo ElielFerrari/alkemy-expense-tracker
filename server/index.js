@@ -17,7 +17,7 @@ const db = mysql.createConnection({
 
 //Petición post de presupuestos a la db
 app.post('/create', (req, res) => {
-    console.log(req.body.date);
+    
     db.query('INSERT INTO expense_table (description, category, amount, date, type) '
     +'VALUES (?,?,?,?,?)',[req.body.desc, req.body.category, req.body.amount, req.body.date, req.body.type],
      (err, result) => {
@@ -30,11 +30,9 @@ app.post('/create', (req, res) => {
 });
 
 // Acción get del botón
-app.get('/transactions', (req, res) => {
+app.get('/transactions/', (req, res) => {
 
-    const queryoptions = req.query.category!=null?{category : req.query.category } : true;
-
-    db.query("SELECT * FROM expense_table WHERE ?", queryoptions, (err, result) => {
+    db.query('SELECT * FROM expense_table ORDER BY date DESC LIMIT 10;', (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -68,6 +66,7 @@ app.delete('/delete/:id', (req, res) => {
             console.log(err);
         } else {
             res.send(result);
+            console.log(result);
         }
     });
 });

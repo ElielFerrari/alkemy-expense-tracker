@@ -16,10 +16,10 @@ function ExpenseEditForm ({ editList }) {
     })
 
     return (
-        <form autoComplete="off">
+        <form className='show-edit-form' autoComplete="off">
             <label >Category:</label>
             <input defaultValue={editList.category} onChange={(e)=> {setNewCategory(e.target.value)}} type="text" required />
-            <label  >Description:</label>
+            <label >Description:</label>
             <input defaultValue={editList.description} onChange={(e) => {setNewDesc(e.target.value)}} type="text"  required/>
             <label >Amount:</label>
             <input defaultValue={editList.amount} onChange={(e) => {setNewAmount(e.target.value)}} type="number" required/>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
+import './Expense.css';
 
 function ExpenseForm ({ amount, setAmount }) {
 
@@ -9,7 +10,7 @@ function ExpenseForm ({ amount, setAmount }) {
     const [category, setCategory] = useState(null);
 
     const addTransaction = () => {
-        Axios.post("http://localhost:3001/create", {
+        axios.post("http://localhost:3001/create", {
           desc,
           category,
           amount,
@@ -20,24 +21,23 @@ function ExpenseForm ({ amount, setAmount }) {
 
 
     return(
-        <form autoComplete="off">
-            <label >Category:</label>
-            <input type="text" onChange={e => {setCategory(e.target.value)}} required />
-            <label >Description:</label>
-            <input type="text"  onChange={e => {setDesc(e.target.value)}} required/>
-            <label >Amount:</label>
-            <input type="number" onChange={e => {setAmount(e.target.value)}} required/>
-            <label >Type of Transaction:</label>
+        <div className='div-form'>
+        <form className='form' autoComplete="off">
+        <h3>Add New Transaction</h3>
+            <input placeholder='Category'type="text" onChange={e => {setCategory(e.target.value)}} required />
+            <input placeholder='Description'type="text"  onChange={e => {setDesc(e.target.value)}} required/>
+            <input placeholder='Amount' type="number" onChange={e => {setAmount(e.target.value)}} required/>
             <select  name="type" onChange={e => {setType(e.target.value)}} required>
-                <option value="" >Choose Type </option>
+                <option value="" >Type of Transaction </option>
                 <option value="Expense" >Expense </option>
                 <option value="Deposit">Deposit </option>
             </select>
-            <label >Date:</label>
             <input type="date" onChange={e => {setDate(e.target.value)}} required />
 
-            <button type='submit' onClick={ addTransaction } >Add Transaction</button>
+            <button type='submit' onClick={ addTransaction }>Add Transaction</button>
         </form>
+            
+        </div>
     )
 };
 

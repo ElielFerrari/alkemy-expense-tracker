@@ -4,6 +4,7 @@ import Header from './ExpenseHome/Header';
 import ExpenseForm from './ExpenseHome/ExpenseForm';
 import ExpenseList from './ExpenseHome/ExpenseList';
 
+
 function App() {
 
   const [amount, setAmount] = useState();
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="App">
      <Header totalAmount={totalAmount}/>
-     <ExpenseForm amount={amount} setAmount={setAmount} />
+     <ExpenseForm className='expense-form'amount={amount} setAmount={setAmount} />
      <ExpenseList transaction={transaction} setTransaction={setTransaction} />
     </div>
   )
